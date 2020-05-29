@@ -24,7 +24,10 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build
-        run: yarn && yarn build
+        run: |
+          yarn
+          yarn build
+          touch build/.nojekyll
 
       # Runs a set of commands using the runners shell
       - name: Test
