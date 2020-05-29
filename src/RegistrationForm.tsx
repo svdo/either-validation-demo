@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
-import { Form, Input, Button } from 'semantic-ui-react'
+import { Form, Input, Button, Message } from 'semantic-ui-react'
+import { validateRegistrationData } from './validation'
+import * as E from 'fp-ts/lib/Either'
+import { RegistrationData } from './registerSlice'
+import { constant } from 'fp-ts/lib/function'
 
 export const RegistrationForm = () => {
   const [email, setEmail] = useState('')
@@ -8,10 +12,18 @@ export const RegistrationForm = () => {
   const [password2, setPassword2] = useState('')
   const [consented, setConsented] = useState(false)
 
+  const validationResult = validateRegistrationData(
+    email,
+    phone,
+    password1,
+    password2,
+    consented
+  )
+
   return (
     <div>
       <h1>Register</h1>
-      <Form>
+      <Form error={E.isLeft(validationResult)}>
         <Form.Field>
           <label>Email:</label>
           <Input
@@ -55,7 +67,23 @@ export const RegistrationForm = () => {
           checked={consented}
           onChange={(_, { checked }) => setConsented(checked || false)}
         />
-        <Button primary content='Register' />
+        <Message
+          error
+          header='The form is not filled out correctly'
+          list={E.getOrElse(constant([] as string[]))(E.swap(validationResult))}
+        />
+        <Button
+          primary
+          content='Register'
+          disabled={E.isLeft(validationResult)}
+          onClick={() => {
+            E.map((reg: RegistrationData) =>
+              window.alert(
+                'All ok, dispatch the data now: ' + JSON.stringify(reg)
+              )
+            )(validationResult)
+          }}
+        />
       </Form>
     </div>
   )
