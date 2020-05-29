@@ -29,3 +29,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Test
         run: yarn && yarn test
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
