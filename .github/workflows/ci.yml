@@ -34,9 +34,8 @@ jobs:
       - name: Test
         run: yarn && yarn test
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.6.1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
