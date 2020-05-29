@@ -27,8 +27,6 @@ jobs:
         run: |
           yarn
           yarn build
-          touch build/.nojekyll
-          ls -lR build
 
       # Runs a set of commands using the runners shell
       - name: Test
