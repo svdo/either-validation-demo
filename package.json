@@ -35,7 +35,7 @@
     "eject": "react-scripts eject",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check -- --watch",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -b gh-pages -u 'github-actions-bot <support+actions@github.com>'"
   },
   "eslintConfig": {
     "extends": "react-app"
