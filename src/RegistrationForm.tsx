@@ -22,7 +22,7 @@ export const RegistrationForm = () => {
 
   return (
     <div>
-      <h1>Register</h1>
+      <h2>Register</h2>
       <Form error={E.isLeft(validationResult)}>
         <Form.Field>
           <label>Email:</label>
