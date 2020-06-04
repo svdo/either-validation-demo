@@ -1,8 +1,10 @@
 import * as O from 'fp-ts/lib/Option'
 import emailAddress from 'email-addresses'
 
-export const oneCapital = O.fromPredicate((s: string) => /[A-Z]/g.test(s))
-export const oneNumber = O.fromPredicate((s: string) => /[0-9]/g.test(s))
+export const atLeastOneCapital = O.fromPredicate((s: string) =>
+  /[A-Z]/g.test(s)
+)
+export const atLeastOneNumber = O.fromPredicate((s: string) => /[0-9]/g.test(s))
 
 export const digits = (n: number) =>
   O.fromPredicate((s: string) => new RegExp(`\^\[0-9\]\{${n}\}\$`).test(s))

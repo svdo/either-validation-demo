@@ -16,8 +16,8 @@ import { constant, flow } from 'fp-ts/lib/function'
 import {
   parseEmail,
   minLength,
-  oneCapital,
-  oneNumber,
+  atLeastOneCapital,
+  atLeastOneNumber,
   digits
 } from './validation'
 
@@ -55,12 +55,12 @@ export const minPasswordLengthValidator = flow(
 )
 
 export const oneCapitalValidator = flow(
-  oneCapital,
+  atLeastOneCapital,
   fromOption(constant(tPasswordOneCapital))
 )
 
 export const oneNumberValidator = flow(
-  oneNumber,
+  atLeastOneNumber,
   fromOption(constant(tPasswordOneNumber))
 )
 
