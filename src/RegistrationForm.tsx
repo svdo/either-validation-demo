@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Input, Button, Message } from 'semantic-ui-react'
-import { validateRegistrationData } from './validation'
+import { validateRegistrationData } from './registrationValidation'
 import * as E from 'fp-ts/lib/Either'
 import { RegistrationData } from './registerSlice'
 import { constant } from 'fp-ts/lib/function'

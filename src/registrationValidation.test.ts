@@ -1,4 +1,4 @@
-import * as V from './validation'
+import * as V from './registrationValidation'
 import { registrationDataEq } from './registerSlice'
 import { getTupleEq, eqString } from 'fp-ts/lib/Eq'
 import { replicate } from 'fp-ts/lib/Array'
