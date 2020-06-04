@@ -4,9 +4,9 @@ import { getTupleEq, eqString } from 'fp-ts/lib/Eq'
 import { replicate } from 'fp-ts/lib/Array'
 
 it('validates email addresses', () => {
-  expect(V.emailValid('')).toBeLeft(V.tInvalidEmail)
-  expect(V.emailValid('foo')).toBeLeft(V.tInvalidEmail)
-  expect(V.emailValid('foo@bar.com')).toBeRight('foo@bar.com')
+  expect(V.emailValidator('')).toBeLeft(V.tInvalidEmail)
+  expect(V.emailValidator('foo')).toBeLeft(V.tInvalidEmail)
+  expect(V.emailValidator('foo@bar.com')).toBeRight('foo@bar.com')
 })
 
 it('validates phone numbers', () => {
@@ -22,23 +22,23 @@ it('validates consent', () => {
 
 describe('password validation', () => {
   it('validates equal passwords', () => {
-    expect(V.equalPasswords('p1', 'p2')).toBeLeft(V.tPasswordsDiffer)
-    expect(V.equalPasswords('abc', 'abc')).toBeRight('abc')
+    expect(V.equalPasswordsValidator('p1', 'p2')).toBeLeft(V.tPasswordsDiffer)
+    expect(V.equalPasswordsValidator('abc', 'abc')).toBeRight('abc')
   })
 
   it('validates minimum length', () => {
-    expect(V.minLength('1234567')).toBeLeft(V.tPasswordLength)
-    expect(V.minLength('12345678')).toBeRight('12345678')
+    expect(V.minPasswordLengthValidator('1234567')).toBeLeft(V.tPasswordLength)
+    expect(V.minPasswordLengthValidator('12345678')).toBeRight('12345678')
   })
 
   it('validates one capital', () => {
-    expect(V.oneCapital('aa')).toBeLeft(V.tPasswordOneCapital)
-    expect(V.oneCapital('aA')).toBeRight('aA')
+    expect(V.oneCapitalValidator('aa')).toBeLeft(V.tPasswordOneCapital)
+    expect(V.oneCapitalValidator('aA')).toBeRight('aA')
   })
 
   it('validates one number', () => {
-    expect(V.oneNumber('a')).toBeLeft(V.tPasswordOneNumber)
-    expect(V.oneNumber('a1')).toBeRight('a1')
+    expect(V.oneNumberValidator('a')).toBeLeft(V.tPasswordOneNumber)
+    expect(V.oneNumberValidator('a1')).toBeRight('a1')
   })
 })
 
