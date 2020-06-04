@@ -3,7 +3,8 @@ import {
   oneNumber,
   minLength,
   maxLength,
-  parseEmail
+  parseEmail,
+  eightDigits
 } from './validation'
 
 it('validates at least one capital', () => {
@@ -15,6 +16,12 @@ it('validates at least one number', () => {
   expect(oneNumber('')).toBeNone()
   expect(oneNumber('a')).toBeNone()
   expect(oneNumber('a1')).toBeSome('a1')
+})
+
+it('validates eight digits', () => {
+  expect(eightDigits('')).toBeNone()
+  expect(eightDigits('123')).toBeNone()
+  expect(eightDigits('12345678')).toBeSome('12345678')
 })
 
 it('validates min length', () => {

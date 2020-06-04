@@ -10,9 +10,8 @@ it('validates email addresses', () => {
 })
 
 it('validates phone numbers', () => {
-  expect(V.phoneValid('')).toBeLeft(V.tInvalidPhone)
-  expect(V.phoneValid('123')).toBeLeft(V.tInvalidPhone)
-  expect(V.phoneValid('12345678')).toBeRight('12345678')
+  expect(V.phoneValidator('123')).toBeLeft(V.tInvalidPhone)
+  expect(V.phoneValidator('12345678')).toBeRight('12345678')
 })
 
 it('validates consent', () => {

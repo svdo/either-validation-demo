@@ -13,7 +13,13 @@ import { pipe } from 'fp-ts/lib/pipeable'
 import { NonEmptyArray, getSemigroup } from 'fp-ts/lib/NonEmptyArray'
 import { RegistrationData } from './registerSlice'
 import { constant, flow } from 'fp-ts/lib/function'
-import { parseEmail, minLength, oneCapital, oneNumber } from './validation'
+import {
+  parseEmail,
+  minLength,
+  oneCapital,
+  oneNumber,
+  eightDigits
+} from './validation'
 
 export const tInvalidEmail = 'Email address is invalid'
 export const tInvalidPhone = 'Phone number should have 8 digits'
@@ -30,8 +36,10 @@ export const emailValidator = (email: string) =>
     fromOption(constant(tInvalidEmail))
   )(email)
 
-export const phoneValid = (phone: string): Either<string, string> =>
-  /[0-9]{8}/.test(phone) ? right(phone) : left(tInvalidPhone)
+export const phoneValidator = flow(
+  eightDigits,
+  fromOption(constant(tInvalidPhone))
+)
 
 export const consentValid = (c: boolean): Either<string, boolean> =>
   c ? right(true) : left(tConsentRequired)
@@ -82,7 +90,7 @@ export function validateRegistrationData (
 ): Either<NonEmptyArray<string>, RegistrationData> {
   return sequenceS(applicativeValidation())({
     email: lift(emailValidator)(email),
-    phone: lift(phoneValid)(phone),
+    phone: lift(phoneValidator)(phone),
     password: passwordValid(p1, p2),
     consented: lift(consentValid)(consent)
   })
