@@ -7,7 +7,7 @@ export const atLeastOneCapital = O.fromPredicate((s: string) =>
 export const atLeastOneNumber = O.fromPredicate((s: string) => /[0-9]/g.test(s))
 
 export const digits = (n: number) =>
-  O.fromPredicate((s: string) => new RegExp(`\^\[0-9\]\{${n}\}\$`).test(s))
+  O.fromPredicate((s: string) => new RegExp(`^[0-9]{${n}}$`).test(s))
 
 const minLengthPred = (minLength: number) => (s: string) =>
   s.length >= minLength
