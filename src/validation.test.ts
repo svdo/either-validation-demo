@@ -4,7 +4,7 @@ import {
   minLength,
   maxLength,
   parseEmail,
-  eightDigits
+  digits
 } from './validation'
 
 it('validates at least one capital', () => {
@@ -19,9 +19,10 @@ it('validates at least one number', () => {
 })
 
 it('validates eight digits', () => {
-  expect(eightDigits('')).toBeNone()
-  expect(eightDigits('123')).toBeNone()
-  expect(eightDigits('12345678')).toBeSome('12345678')
+  expect(digits(8)('')).toBeNone()
+  expect(digits(8)('123')).toBeNone()
+  expect(digits(8)('12345678')).toBeSome('12345678')
+  expect(digits(8)('123456789')).toBeNone()
 })
 
 it('validates min length', () => {

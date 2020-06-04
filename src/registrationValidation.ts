@@ -18,7 +18,7 @@ import {
   minLength,
   oneCapital,
   oneNumber,
-  eightDigits
+  digits
 } from './validation'
 
 export const tInvalidEmail = 'Email address is invalid'
@@ -37,7 +37,7 @@ export const emailValidator = (email: string) =>
   )(email)
 
 export const phoneValidator = flow(
-  eightDigits,
+  digits(8),
   fromOption(constant(tInvalidPhone))
 )
 
