@@ -22,4 +22,6 @@ jobs:
         run: yarn && yarn test
 
       - name: Deploy
-        run: yarn deploy
+        run: |
+          git remote set-url origin https://svdo:${{ secrets.GITHUB_TOKEN }}@github.com/svdo/either-validation-demo.git
+          yarn deploy
