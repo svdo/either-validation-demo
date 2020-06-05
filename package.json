@@ -36,7 +36,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check -- --watch",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build -u 'Stefan van den Oord <4028554+svdo@users.noreply.github.com>'"
+    "deploy": "gh-pages -d build -u 'Stefan van den Oord <stefan.van.den.oord@philips.com>'"
   },
   "eslintConfig": {
     "extends": "react-app"
