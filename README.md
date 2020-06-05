@@ -4,8 +4,7 @@ Getting Help From Your Compiler
 ![CI](https://github.com/svdo/either-validation-demo/workflows/CI/badge.svg)
 
 This repository contains demo code belonging to [my blog post][blog-post]. A
-build of this demo is [deployed here][deployed]. Or rather it will be once I get
-that to work.
+build of this demo is [deployed here][deployed].
 
 You can build & run this yourself by cloning the repository, and then:
 
