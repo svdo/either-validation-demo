@@ -21,6 +21,7 @@
     "typescript": "~3.7.2"
   },
   "devDependencies": {
+    "fp-ts-jest-matchers": "1.0.1",
     "gh-pages": "^3.0.0",
     "prettier": "^2.0.5",
     "tslint": "^6.1.2",
