@@ -28,6 +28,9 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^9.0.0"
   },
+  "resolutions": {
+    "immer": "^8.0.1"
+  },
   "scripts": {
     "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts*' 'test/**/*.ts*'",
     "start": "react-scripts start",
