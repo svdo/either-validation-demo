@@ -29,7 +29,8 @@
     "tslint-config-standard": "^9.0.0"
   },
   "resolutions": {
-    "immer": "^8.0.1"
+    "immer": "^8.0.1",
+    "node-notifier": "^8.0.1"
   },
   "scripts": {
     "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts*' 'test/**/*.ts*'",
